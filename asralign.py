@@ -1,13 +1,13 @@
-import utils.S2T.stage2 as stage2
-import utils.S2T.stage3 as stage3
-import utils.S2T.stage4 as stage4
+import utils.ASRAlign.stage2 as stage2
+import utils.ASRAlign.stage3 as stage3
+import utils.ASRAlign.stage4 as stage4
 import sys
 
 modelName = "Shinji Watanabe/librispeech_asr_train_asr_transformer_e18_raw_bpe_sp_valid.acc.best"
 
 
 def stage2Main():
-    return stage2.prepareModel(modelName)
+    return stage2.prepareAligner(modelName)
 
 
 def stage3Main(speech2textModel):

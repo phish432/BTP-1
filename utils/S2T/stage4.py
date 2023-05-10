@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 
 pathToGivenFilenames = "data/given_filenames.txt"
@@ -7,6 +6,7 @@ pathToGivenRatings = "data/given_ratings.txt"
 pathToS2TInference = "output/S2T/inference.csv"
 pathToS2TScores = "output/S2T/scores.csv"
 pathToS2TResults = "output/S2T/results.txt"
+pathToS2TPlots = "output/S2T/plots.png"
 
 reqCols = ["overall-score", "decoder-score", "lm-score", "ctc-score", "rating"]
 
@@ -33,8 +33,8 @@ def preprocessData():
 
     df = pd.concat([inferences, ratings], axis=1)
     df[reqCols] = df[reqCols].astype(float)
-    dfN = normalize(df[reqCols])
-    df[reqCols] = dfN
+    # dfN = normalize(df[reqCols])
+    # df[reqCols] = dfN
     df.to_csv(pathToS2TScores, index=False)
 
 
@@ -71,4 +71,4 @@ def calculateCorrelations():
     plt.plot(df["rating"], label="rating", marker=".")
     plt.legend()
 
-    plt.savefig("output/S2T/plots.png")
+    plt.savefig(pathToS2TPlots)
